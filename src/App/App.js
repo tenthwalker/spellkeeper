@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // import Card from '../Card/Card.js';
 import Spells from '..Spells/Spells.js';
@@ -6,7 +6,15 @@ import './App.css';
 
 function App() {
 
-  const [spells, setSpells] = useState([])
+  const [spells, setSpells] = useState([]);
+  const url = 'https://api.open5e.com/v1/spells/?format=json';
+
+  useEffect(() => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => setSpells(data))
+      .catch(error => console.log(error))
+  }, []);
 
   return (
     <div className="App">
