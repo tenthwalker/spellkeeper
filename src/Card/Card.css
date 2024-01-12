@@ -1,8 +1,19 @@
+h2, p {
+  margin: 0.25em;
+}
+
+button {
+  width: fit-content;
+  align-self: center;
+}
+
 .spell-card {
   display: flex;
-  flex-direction: column;
+  flex-flow: wrap column;
   color: #243E36;
+  width: 15em;
+  padding: 1em;
+  margin: 1em;
   background-color: #F2EFC7;
   border: 5px solid #8B786D;
 }
-
