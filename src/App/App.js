@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import Card from '../Card/Card.js';
-// import Spells from '..Spells/Spells.js';
+import Spells from '../Spells/Spells.js';
 import './App.css';
 
 function App() {
 
   const [spells, setSpells] = useState([]);
+  // const [savedSpells, setSavedSpells] = useState([]);
   const url = 'https://api.open5e.com/v1/spells/?format=json';
 
   useEffect(() => {
     fetch(url)
       .then(response => response.json())
-      .then(data => console.log(data))
-      // .then(data => setSpells(data))
+      .then(data => setSpells(data.results))
       .catch(error => console.log(error))
   }, []);
-
-
 
   return (
     <div className="App">
@@ -25,9 +22,7 @@ function App() {
         <h1>spellkeeper</h1>
       </header>
       <main className='spell-view'>
-        <section className='spell-list'>
-          {/* <Spells spells={spells}/> */}
-        </section>
+        <Spells spells={spells}/>
       </main>
       <footer>
         <button>Your Spellbook</button>
