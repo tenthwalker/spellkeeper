@@ -12,18 +12,21 @@ function App() {
   useEffect(() => {
     fetch(url)
       .then(response => response.json())
-      .then(data => setSpells(data))
+      .then(data => console.log(data))
+      // .then(data => setSpells(data))
       .catch(error => console.log(error))
   }, []);
+
+
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>spellkeeper</h1>
       </header>
-      <main className='main-view'>
+      <main className='spell-view'>
         <section className='spell-list'>
-          <Spells />
+          <Spells spells={spells}/>
         </section>
       </main>
       <footer>
