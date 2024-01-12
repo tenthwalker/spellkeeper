@@ -12,8 +12,8 @@ function App() {
   useEffect(() => {
     fetch(url)
       .then(response => response.json())
-      .then(data => console.log(data))
-      // .then(data => setSpells(data))
+      .then(data => console.log(data.results))
+      // .then(data => setSpells(data.results))
       .catch(error => console.log(error))
   }, []);
 
