@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // import Card from '../Card/Card.js';
-import Spells from '..Spells/Spells.js';
+// import Spells from '..Spells/Spells.js';
 import './App.css';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
       </header>
       <main className='spell-view'>
         <section className='spell-list'>
-          <Spells spells={spells}/>
+          {/* <Spells spells={spells}/> */}
         </section>
       </main>
       <footer>
