@@ -1,0 +1,8 @@
+.spell-card {
+  display: flex;
+  flex-direction: column;
+  color: #243E36;
+  background-color: #F2EFC7;
+  border: 5px solid #8B786D;
+}
+

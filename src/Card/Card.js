@@ -1,4 +1,4 @@
-import '/Card.css';
+import './Card.css';
 import React, { useState } from 'react';
 
 export default function Card({ name, casting_time, range, duration, desc }) {

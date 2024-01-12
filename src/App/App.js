@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import Card from '../Card/Card.js';
+import Card from '../Card/Card.js';
 // import Spells from '..Spells/Spells.js';
 import './App.css';
 
