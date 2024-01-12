@@ -7,13 +7,30 @@ function App() {
 
   const [spells, setSpells] = useState([]);
   // const [savedSpells, setSavedSpells] = useState([]);
-  const url = 'https://api.open5e.com/v1/spells/?format=json';
+  
+  const url = 'https://www.dnd5eapi.co';
+
+  async function getSpells() {
+    try {
+      const response = await fetch(url + '/api/spells');
+
+      if (!response.ok) {
+        throw new Error("Network response error");
+      }
+
+      const spellNames = await response.json();
+
+      return Promise.all(
+        spellNames.results.map(index => fetch(url + index.url).then(response => response.json()))
+      );
+    } catch(error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => setSpells(data.results))
-      .catch(error => console.log(error))
+    getSpells()
+    .then(setSpells);
   }, []);
 
   return (

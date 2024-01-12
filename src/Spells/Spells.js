@@ -2,10 +2,10 @@ import './Spells.css';
 import Card from '../Card/Card.js';
 
 export default function Spells({spells}) {
-  const spellCards = spells.map((spell, i) => (
+  const spellCards = spells.map((spell) => (
     <Card
-      key={i}
-      id={i}
+      key={spell.index}
+      id={spell.index}
       name={spell.name}
       casting_time={spell.casting_time}
       range={spell.range}
