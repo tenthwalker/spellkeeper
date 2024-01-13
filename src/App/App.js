@@ -57,6 +57,7 @@ function App() {
       <header className="App-header">
         <h1>spellkeeper</h1>
       </header>
+      {spells.length === 0 && <span className="loading">loading spells</span>}
       <Main spells={spells}/>
       <Routes>
         <Route path='/' element={<Main spells={spells} />} />
