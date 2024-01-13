@@ -11,6 +11,7 @@ export default function Spells({spells}) {
       range={spell.range}
       duration={spell.duration}
       desc={spell.desc}
+      isKnown="false"
     />
   ))
 

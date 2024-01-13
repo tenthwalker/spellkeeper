@@ -1,7 +1,7 @@
 import './Card.css';
 import React from 'react';
 
-export default function Card({ name, casting_time, range, duration, desc }) {
+export default function Card({ name, casting_time, range, duration, desc, handleKnown }) {
   return (
     <div className='spell-card'>
       <h2>{name}</h2>
@@ -9,7 +9,7 @@ export default function Card({ name, casting_time, range, duration, desc }) {
       <p>{range}</p>
       <p>{duration}</p>
       <p>{desc}</p>
-      <button>Learn</button>
+      <button className="learn-toggle" onClick={handleKnown}>Learn</button>
     </div>
   )
 }

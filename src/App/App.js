@@ -29,14 +29,21 @@ function App() {
     }
   }
 
-  const saveSpells = (id) => {
-    const learnSpell = savedSpells.filter(spell => spell.id === id)
-    setSavedSpells([...savedSpells, learnSpell]);
-  }
+  function handleKnown(event) {
+    const saveSpells = (event) => {
+      const learnSpell = savedSpells.filter(spell => spell.id === event.target.id);
+      learnSpell.isKnown = "true";
+      setSavedSpells([...savedSpells, learnSpell]);
+    }
 
-  const deleteSpells = (id) => {
-    const filteredSpells = savedSpells.filter(spell => spell.id !== id)
-    setSavedSpells(filteredSpells);
+    const deleteSpells = (event) => {
+      const learnedSpell = savedSpells.filter(spell => spell.id === event.target.id);
+      learnedSpell.isKnown = "false";
+      const filteredSpells = savedSpells.filter(spell => spell.id !== event.target.id);
+      setSavedSpells(filteredSpells);
+    }
+    
+    return event.target.isKnown ? deleteSpells : saveSpells
   }
 
   useEffect(() => {
@@ -58,7 +65,7 @@ function App() {
         </button>
       </footer>
       <Routes>
-        <Route path='/' element={<Main />} />
+        {/* <Route path='/' element={<Main />} /> */}
         <Route path='/known' element={<Saved savedSpells={savedSpells} />} />
       </Routes>
     </div>
