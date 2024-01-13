@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import Spells from '../Spells/Spells.js';
 import './App.css';
 
 function App() {
 
   const [spells, setSpells] = useState([]);
-  // const [savedSpells, setSavedSpells] = useState([]);
+  const [savedSpells, setSavedSpells] = useState([]);
   
   const url = 'https://www.dnd5eapi.co';
 
@@ -28,6 +28,15 @@ function App() {
     }
   }
 
+  const saveSpells = () => {
+    setSavedSpells([...savedSpells, ]);
+  }
+
+  const deleteSpells = (id) => {
+    const filteredSpells = savedSpells.filter(spell => spell.id !== id)
+    setSavedSpells(filteredSpells);
+  }
+
   useEffect(() => {
     getSpells()
     .then(setSpells);
@@ -42,10 +51,12 @@ function App() {
         <Spells spells={spells}/>
       </main>
       <footer>
-        <button>Your Spellbook</button>
+        <button>
+          <NavLink to='/known' className='nav'>Your Spellbook</NavLink>
+        </button>
       </footer>
       <Routes>
-        <Route />
+        <Route path='/known' element={<Saved savedSpells={savedSpells} />} />
       </Routes>
     </div>
   );
