@@ -1,0 +1,8 @@
+span {
+  margin-bottom: 10px;
+}
+
+.known-view {
+  display: flex;
+  justify-content: center;
+}
