@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Spells from '../Spells/Spells.js';
+import Main from '../Main/Main.js';
 import './App.css';
 
 function App() {
 
   const [spells, setSpells] = useState([]);
-  // const [savedSpells, setSavedSpells] = useState([]);
+  const [savedSpells, setSavedSpells] = useState([]);
   
   const url = 'https://www.dnd5eapi.co';
 
@@ -38,14 +39,9 @@ function App() {
       <header className="App-header">
         <h1>spellkeeper</h1>
       </header>
-      <main className='spell-view'>
-        <Spells spells={spells}/>
-      </main>
-      <footer>
-        <button>Your Spellbook</button>
-      </footer>
+      <Main spells={spells}/>
       <Routes>
-        <Route />
+        <Route path='/' element={<Main spells={spells} />} />
       </Routes>
     </div>
   );
