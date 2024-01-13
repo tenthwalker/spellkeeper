@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import Spells from '../Spells/Spells.js';
+import Saved from '../Saved/Saved.js';
 import './App.css';
 
 function App() {
@@ -28,8 +29,9 @@ function App() {
     }
   }
 
-  const saveSpells = () => {
-    setSavedSpells([...savedSpells, ]);
+  const saveSpells = (id) => {
+    const learnSpell = savedSpells.filter(spell => spell.id === id)
+    setSavedSpells([...savedSpells, learnSpell]);
   }
 
   const deleteSpells = (id) => {
@@ -56,6 +58,7 @@ function App() {
         </button>
       </footer>
       <Routes>
+        <Route path='/' element={<Main />} />
         <Route path='/known' element={<Saved savedSpells={savedSpells} />} />
       </Routes>
     </div>
