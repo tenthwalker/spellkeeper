@@ -57,10 +57,9 @@ function App() {
       <header className="App-header">
         <h1>spellkeeper</h1>
       </header>
-      {spells.length === 0 && <span className="loading">loading spells</span>}
-      <Main spells={spells}/>
+      {spells.length === 0 && <span className='message'>loading spells</span>}
       <Routes>
-        <Route path='/' element={<Main spells={spells} />} />
+        <Route path='' element={<Main spells={spells} />} />
         <Route path='/known' element={<Saved savedSpells={savedSpells} />} />
       </Routes>
     </div>

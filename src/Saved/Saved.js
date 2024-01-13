@@ -9,6 +9,7 @@ export default function Saved({savedSpells}) {
   return (
     <div>
       <main className='known-view'>
+        {savedSpells.length === 0 && <span className='message'>go learn some spells</span>}
         <Spells spells={savedSpells} />
       </main>
       <footer>
