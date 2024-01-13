@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import Spells from '../Spells/Spells.js';
 import Saved from '../Saved/Saved.js';
+import Main from '../Main/Main.js';
 import './App.css';
 
 function App() {
@@ -56,16 +57,9 @@ function App() {
       <header className="App-header">
         <h1>spellkeeper</h1>
       </header>
-      <main className='spell-view'>
-        <Spells spells={spells}/>
-      </main>
-      <footer>
-        <button>
-          <NavLink to='/known' className='nav'>Your Spellbook</NavLink>
-        </button>
-      </footer>
+      <Main spells={spells}/>
       <Routes>
-        {/* <Route path='/' element={<Main />} /> */}
+        <Route path='/' element={<Main spells={spells} />} />
         <Route path='/known' element={<Saved savedSpells={savedSpells} />} />
       </Routes>
     </div>
