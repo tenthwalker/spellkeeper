@@ -30,21 +30,22 @@ function App() {
     }
   }
 
-  function handleKnown(event) {
-    const saveSpells = (event) => {
-      const learnSpell = savedSpells.filter(spell => spell.id === event.target.id);
+  function handleKnown(selectedSpell) {
+    const saveSpells = (selectedSpell) => {
+      console.log('spell saved')
+      const learnSpell = savedSpells.filter(spell => spell.id === selectedSpell.index);
       learnSpell.isKnown = "true";
       setSavedSpells([...savedSpells, learnSpell]);
     }
 
-    const deleteSpells = (event) => {
-      const learnedSpell = savedSpells.filter(spell => spell.id === event.target.id);
+    const deleteSpells = (selectedSpell) => {
+      const learnedSpell = savedSpells.filter(spell => spell.id === selectedSpell.index);
       learnedSpell.isKnown = "false";
-      const filteredSpells = savedSpells.filter(spell => spell.id !== event.target.id);
+      const filteredSpells = savedSpells.filter(spell => spell.id !== selectedSpell.index);
       setSavedSpells(filteredSpells);
     }
     
-    return event.target.isKnown ? deleteSpells : saveSpells
+    return selectedSpell.isKnown ? deleteSpells : saveSpells
   }
 
   useEffect(() => {
@@ -57,9 +58,9 @@ function App() {
       <header className="App-header">
         <h1>spellkeeper</h1>
       </header>
-      {spells.length === 0 && <span className='message'>loading spells</span>}
+      {/* {spells.length === 0 && <span className='message'>loading spells</span>} */}
       <Routes>
-        <Route path='' element={<Main spells={spells} />} />
+        <Route path='' element={<Main spells={spells} handleKnown={handleKnown} />} />
         <Route path='/known' element={<Saved savedSpells={savedSpells} />} />
       </Routes>
     </div>

@@ -2,6 +2,8 @@
   background-color: #E1D4ED;
   height: fit-content;
   min-height: 100vh;
+  display: flex; 
+  flex-direction: column;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
@@ -25,6 +27,7 @@ h1 {
 
 h1, span {
   color: #243E36;
+  align-self: center;
 }
 
 p, button, h2, span {

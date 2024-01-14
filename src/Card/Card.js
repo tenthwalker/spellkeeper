@@ -2,6 +2,7 @@ import './Card.css';
 import React from 'react';
 
 export default function Card({ name, casting_time, range, duration, desc, handleKnown }) {
+
   return (
     <div className='spell-card'>
       <h2>{name}</h2>
