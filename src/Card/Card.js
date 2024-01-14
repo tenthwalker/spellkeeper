@@ -1,5 +1,6 @@
 import './Card.css';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Card({ index, name,  casting_time, range, duration, desc, handleKnown }) {
 
@@ -24,4 +25,14 @@ export default function Card({ index, name,  casting_time, range, duration, desc
       <button className="learn-toggle" onClick={() => handleKnown(selectedSpell)}>Learn</button>
     </div>
   )
+};
+
+Card.propTypes = {
+  index: PropTypes.string,
+  name: PropTypes.string,
+  casting_time: PropTypes.string,
+  range: PropTypes.string,
+  duration: PropTypes.string,
+  desc: PropTypes.array,
+  handleKnown: PropTypes.func
 };

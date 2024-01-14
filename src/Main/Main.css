@@ -1,0 +1,12 @@
+.main-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button {
+  display: flex;
+  align-self: center;
+  position: sticky;
+}

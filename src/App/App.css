@@ -34,11 +34,6 @@ p, button, h2, span {
   font-family: 'Salsa', cursive;
 }
 
-footer {
-  display: flex;
-  justify-content: center;
-}
-
 button {
   background-color: #44BBA4;
   border-radius: 5px;
