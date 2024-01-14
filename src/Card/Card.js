@@ -1,7 +1,18 @@
 import './Card.css';
 import React from 'react';
 
-export default function Card({ name, casting_time, range, duration, desc, handleKnown }) {
+export default function Card({ index, name,  casting_time, range, duration, desc, handleKnown }) {
+
+  const selectedSpell = {
+    key: index,
+    id: index,
+    name: name,
+    casting_time: casting_time,
+    range: range,
+    duration: duration,
+    desc: desc,
+    isKnown: false
+  }
 
   return (
     <div className='spell-card'>
@@ -10,7 +21,7 @@ export default function Card({ name, casting_time, range, duration, desc, handle
       <p>{range}</p>
       <p>{duration}</p>
       <p>{desc}</p>
-      <button className="learn-toggle" onClick={handleKnown}>Learn</button>
+      <button className="learn-toggle" onClick={() => handleKnown(selectedSpell)}>Learn</button>
     </div>
   )
-}
+};

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
-import Spells from '../Spells/Spells.js';
+// import Spells from '../Spells/Spells.js';
 import Saved from '../Saved/Saved.js';
 import Main from '../Main/Main.js';
 import './App.css';
@@ -31,21 +31,22 @@ function App() {
   }
 
   function handleKnown(selectedSpell) {
-    const saveSpells = (selectedSpell) => {
-      console.log('spell saved')
-      const learnSpell = savedSpells.filter(spell => spell.id === selectedSpell.index);
-      learnSpell.isKnown = "true";
-      setSavedSpells([...savedSpells, learnSpell]);
-    }
-
-    const deleteSpells = (selectedSpell) => {
-      const learnedSpell = savedSpells.filter(spell => spell.id === selectedSpell.index);
-      learnedSpell.isKnown = "false";
-      const filteredSpells = savedSpells.filter(spell => spell.id !== selectedSpell.index);
-      setSavedSpells(filteredSpells);
-    }
-    
-    return selectedSpell.isKnown ? deleteSpells : saveSpells
+    const saveSpells = () => {
+      console.log('spell saved');
+      selectedSpell.isKnown = true
+      setSavedSpells(...spells, selectedSpell);
+      return savedSpells
+    };
+  
+    // const deleteSpells = (selectedSpell) => {
+    //   console.log('spell deleted');
+    //   const learnedSpell = savedSpells.find(spell => spell.id === selectedSpell.id);
+    //   learnedSpell.isKnown = false;
+    //   const filteredSpells = savedSpells.filter(spell => spell.id !== selectedSpell.id);
+    //   setSavedSpells(filteredSpells);
+    // };
+  
+    return saveSpells;
   }
 
   useEffect(() => {
@@ -58,7 +59,7 @@ function App() {
       <header className="App-header">
         <h1>spellkeeper</h1>
       </header>
-      {/* {spells.length === 0 && <span className='message'>loading spells</span>} */}
+      {spells.length === 0 && <span className='message'>loading spells</span>}
       <Routes>
         <Route path='' element={<Main spells={spells} handleKnown={handleKnown} />} />
         <Route path='/known' element={<Saved savedSpells={savedSpells} />} />
