@@ -13,11 +13,6 @@ function App() {
   
   const url = 'https://www.dnd5eapi.co';
 
-  // function createSpellsArray() {
-  //   savedSpells = []
-  //   return savedSpells;
-  // }
-
   async function getSpells() {
     try {
       const response = await fetch(url + '/api/spells');
@@ -37,24 +32,24 @@ function App() {
   }
 
   function handleKnown(selectedSpell) {
-    const learnedSpell = savedSpells.filter(spell => spell.id === selectedSpell.id);
 
     function saveSpells() {
       console.log('spell saved');
       selectedSpell.isKnown = true;
-      setSavedSpells([...savedSpells, selectedSpell])
+      setSavedSpells([...savedSpells, selectedSpell]);
       return savedSpells;
-    } 
+    }; 
       
     function deleteSpells() {
       console.log('spell deleted');
       selectedSpell.isKnown = false;
       const filteredSpells = savedSpells.filter(spell => spell.id !== selectedSpell.id);
       setSavedSpells([filteredSpells]);
+      return savedSpells;
     };
   
-    learnedSpell.length > 0 ? deleteSpells() : saveSpells();
-
+    selectedSpell.isKnown ? deleteSpells() : saveSpells();
+    console.log('past ternary')
     return savedSpells
   }
 
