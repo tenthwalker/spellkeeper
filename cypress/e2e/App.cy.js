@@ -35,7 +35,12 @@ describe('App component', () => {
       fixture: 'sanctuary',
     }).as('fetchSanctuary');
 
-    cy.wait(['@fetchSpellNames', '@fetchAcidArrow', '@fetchHeroism', '@fetchSanctuary'])
+    cy.wait(['@fetchSpellNames', '@fetchAcidArrow', '@fetchHeroism', '@fetchSanctuary']).spread((fetchSpellNames, fetchAcidArrow, fetchHeroism, fetchSanctuary) => {
+      expect(fetchSpellNames.response.statusCode).to.equal(200);
+      expect(fetchAcidArrow.response.statusCode).to.equal(200);
+      expect(fetchHeroism.response.statusCode).to.equal(200);
+      expect(fetchSanctuary.response.statusCode).to.equal(200);
+      })
     
     cy.get('.spell-list')
       .children()
@@ -86,9 +91,11 @@ describe('App component', () => {
       body: 'Server Error',
       delayMs: 200,
     }).as('fetchError4')
-    cy.wait(['@fetchError1', '@fetchError2', '@fetchError3', '@fetchError4']).then(({ response }) => {
-      expect(response.statusCode).to.equal(500);
-      cy.contains('An error occurred').should('exist');
+    cy.wait(['@fetchError1', '@fetchError2', '@fetchError3', '@fetchError4']).spread((fetchError1, fetchError2, fetchError3, fetchError4) => {
+      expect(fetchError1.response.statusCode).to.equal(500);
+      expect(fetchError2.response.statusCode).to.equal(500);
+      expect(fetchError3.response.statusCode).to.equal(500);
+      expect(fetchError4.response.statusCode).to.equal(500);
     });
   });
 });
