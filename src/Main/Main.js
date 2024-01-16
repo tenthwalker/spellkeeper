@@ -11,14 +11,13 @@ export default function Main({buttonToggle, spells, handleKnown, handleDelete}) 
         <NavLink to='/known' className='nav'>Your Spellbook</NavLink>
       </button>
       <main className='spell-view'>
-        <Spells buttonToggle={buttonToggle} spells={spells} handleKnown={handleKnown} handleDelete={handleDelete}/>
+        <Spells spells={spells} handleKnown={handleKnown} handleDelete={handleDelete}/>
       </main>
     </div>
   )
 }
 
 Main.propTypes = {
-  buttonToggle: PropTypes.bool.isRequired,
   spells: PropTypes.array.isRequired,
   handleKnown: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired

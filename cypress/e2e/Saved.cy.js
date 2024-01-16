@@ -58,7 +58,7 @@ describe('Saved component', () => {
     cy.get('.learn').first().click();
     cy.get('.learn').last().click();
     cy.get('.nav').click();
-    cy.visit('http://localhost:3000/known');
+    // cy.visit('http://localhost:3000/known');
     cy.get('.known-view')
       .children()
       .first()
@@ -82,7 +82,7 @@ describe('Saved component', () => {
         cy.contains('button', 'Learn');
         cy.contains('button', 'Forget');
       });
-      cy.get('.nav-button').should('contain', 'a');
+      cy.get('.nav-button').should('be.visible');
       cy.get('.nav').should('contain', "All Spells");
   })
 })

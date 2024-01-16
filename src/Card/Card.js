@@ -2,7 +2,7 @@ import './Card.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Card({ buttonToggle, name, casting_time, range, duration, desc, handleKnown, handleDelete }) {
+export default function Card({ name, casting_time, range, duration, desc, handleKnown, handleDelete }) {
 
   const selectedSpell = {
     key: name,
@@ -23,15 +23,14 @@ export default function Card({ buttonToggle, name, casting_time, range, duration
       <p>{duration}</p>
       <p>{desc}</p>
       <div className='button-box'>
-        <button disabled={buttonToggle} className="learn-toggle learn" onClick={() => handleKnown(selectedSpell)}>Learn</button>
-        <button disabled={!buttonToggle} className='learn-toggle delete' onClick={()=> handleDelete(selectedSpell)}>Forget</button>
+        <button className="learn-toggle learn" onClick={() => handleKnown(selectedSpell)}>Learn</button>
+        <button className='learn-toggle delete' onClick={()=> handleDelete(selectedSpell)}>Forget</button>
       </div>
     </div>
   )
 };
 
 Card.propTypes = {
-  buttonToggle: PropTypes.bool.isRequired,
   index: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   casting_time: PropTypes.string.isRequired,
