@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+<h1 align=center> spellkeeper </h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+    
+<a href="https://spellkeeper.vercel.app/" style="font-size: 30px;">Deployed Link</a>
 
-## Available Scripts
+Created by [Arden Ranta](https://github.com/tenthwalker).
 
-In the project directory, you can run:
+## 📂 Tech Stack
+![React Badge](https://img.shields.io/badge/react%20-%23F1D302.svg?&style=for-the-badge&logo=react&logoColor=white)
+![React Router Badge](https://img.shields.io/badge/React_Router-%23235789?style=for-the-badge&logo=react-router&logoColor=white)
+![Cypress Badge](https://img.shields.io/badge/Cypress-%23C1292E?style=for-the-badge&logo=cypress&logoColor=white)
+![VSCode Badge](https://img.shields.io/badge/VSCode-%23F1D302?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📚 Table of Contents
 
-### `npm test`
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+- [Preview](#preview)
+- [Wins](#wins)
+- [Future Ideas](#future-ideas)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h2  id="overview">🌐 Overview </h2>
 
-### `npm run build`
+*Keep track of your favorite Dungeons and Dragons 5th Edition spells in one convenient spellbook! Whether you're a seasoned adventurer or have just joined the table, your spellcasting reference materials are only a tap and scroll away.*
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+----
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2  id="getting-started">🗂️ Getting Started </h2>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Fork or clone down this respository. 
+2. In the terminal, open this app by running the command `cd <project folder name>`
+3. Run the command  `npm install` to install dependencies. You will need Cypress, React, React Router, and PropTypes.
+4. Run the command `npm start` to start the server.
+5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+6. You can also view the project <a href="https://spellkeeper.vercel.app/">here</a>.
+7. Use `control C` to stop the server.
+8. To test, run the command `npm run cypress`, then follow the steps to configure E2E testing on your machine.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<h2  id="preview"> 🎥 Preview 📱 </h2>
+<details>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+📱 Mobile and Tablet Views 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  <summary>
+    Preview of App
+  </summary>
+</details>
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+<h2  id="wins">💪🏻 Wins </h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Incorporating Router smoothly
+- Getting a lot of practice with UseState
+- Readily available and thorough documentation
+- Content I personally care about
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h2  id="future-ideas">💡 Future Ideas </h2>
+ 
+🔮 Export Known Spells
+🔮 Sort by Class
+🔮 Search 
