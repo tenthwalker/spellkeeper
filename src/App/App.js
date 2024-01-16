@@ -87,6 +87,6 @@ export default App;
 
 App.propTypes = {
   spells: PropTypes.array.isRequired,
-  handleKnown: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired
+  handleKnown: PropTypes.func,
+  handleDelete: PropTypes.func
 }

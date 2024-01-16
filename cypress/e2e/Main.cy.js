@@ -28,7 +28,7 @@ describe('Main component', () => {
      expect(fetchSanctuary.response.statusCode).to.equal(200);
     });
   });
-  
+
   it('returns from the saved view to main', () => {
     cy.visit('http://localhost:3000/known');
     cy.get('.nav').should('contain', "All Spells");
@@ -62,5 +62,16 @@ describe('Main component', () => {
         cy.contains('button', 'Learn');
         cy.contains('button', 'Forget');
       });
+  });
+
+  it('handles bad/unknown routes', () => {
+    cy.visit('http://localhost:3000/undefined');
+    cy.get('h1').should('contain', 'spellkeeper');
+    cy.get('.main-component').should('be.visible');
+    cy.get('h2').should('contain', 'Oops! You seem to be lost.');
+    cy.get('p').should('contain', 'Return to the path of knowledge:');
+    cy.get('.nav-button').should('have.length', 2);
+    cy.get('a').first().should('contain', 'All Spells');
+    cy.get('a').last().should('contain', 'Your Spellbook');
   })
 })

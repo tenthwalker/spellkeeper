@@ -3,7 +3,7 @@ import Spells from '../Spells/Spells.js';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export default function Main({buttonToggle, spells, handleKnown, handleDelete}) {
+export default function Main({spells, handleKnown, handleDelete}) {
 
   return (
     <div className='main-component'>

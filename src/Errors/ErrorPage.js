@@ -5,8 +5,8 @@ export default function NotFound() {
     <div className='main-component'>
       <h2>Oops! You seem to be lost.</h2>
       <p>Return to the path of knowledge:</p>
-      <button><Link to='/'>All Spells</Link></button>
-      <button><Link to='/known'>Your Spellbook</Link></button>
+      <button className='nav-button'><Link to='/'>All Spells</Link></button>
+      <button className='nav-button'><Link to='/known'>Your Spellbook</Link></button>
     </div>
   )
 }
