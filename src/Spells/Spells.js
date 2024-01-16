@@ -2,12 +2,12 @@ import './Spells.css';
 import Card from '../Card/Card.js';
 import PropTypes from 'prop-types';
 
-export default function Spells({spells, handleKnown}) {
+export default function Spells({spells, handleKnown, handleDelete}) {
 
   const spellCards = spells.map((spell) => (
     <Card
-      key={spell.index}
-      id={spell.index}
+      key={spell.name}
+      id={spell.name}
       name={spell.name}
       casting_time={spell.casting_time}
       range={spell.range}
@@ -15,6 +15,7 @@ export default function Spells({spells, handleKnown}) {
       desc={spell.desc}
       isKnown="false"
       handleKnown={handleKnown}
+      handleDelete={handleDelete}
     />
   ));
 
@@ -26,5 +27,7 @@ export default function Spells({spells, handleKnown}) {
 };
 
 Spells.propTypes = {
-  spells: PropTypes.array.isRequired
+  spells: PropTypes.array.isRequired,
+  handleKnown: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired
 };

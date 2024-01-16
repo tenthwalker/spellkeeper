@@ -2,11 +2,11 @@ import './Card.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Card({ index, name,  casting_time, range, duration, desc, handleKnown }) {
+export default function Card({ name, casting_time, range, duration, desc, handleKnown, handleDelete }) {
 
   const selectedSpell = {
-    key: index,
-    id: index,
+    key: name,
+    id: name,
     name: name,
     casting_time: casting_time,
     range: range,
@@ -22,7 +22,10 @@ export default function Card({ index, name,  casting_time, range, duration, desc
       <p>{range}</p>
       <p>{duration}</p>
       <p>{desc}</p>
-      <button className="learn-toggle" onClick={() => handleKnown(selectedSpell)}>Learn</button>
+      <div className='button-box'>
+        <button className="learn-toggle" id='learn' onClick={() => handleKnown(selectedSpell)}>Learn</button>
+        <button className='learn-toggle' id='delete' onClick={()=> handleDelete(selectedSpell)}>Forget</button>
+      </div>
     </div>
   )
 };
@@ -34,5 +37,6 @@ Card.propTypes = {
   range: PropTypes.string,
   duration: PropTypes.string,
   desc: PropTypes.array,
-  handleKnown: PropTypes.func
+  handleKnown: PropTypes.func,
+  handleDelete: PropTypes.func
 };

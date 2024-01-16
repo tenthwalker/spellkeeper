@@ -4,7 +4,7 @@ import '../Saved/Saved.css';
 import PropTypes from 'prop-types';
 import Spells from '../Spells/Spells.js';
 
-export default function Saved({savedSpells, handleKnown}) {
+export default function Saved({savedSpells, handleKnown, handleDelete}) {
 
   return (
     <div className='main-component'>
@@ -13,12 +13,14 @@ export default function Saved({savedSpells, handleKnown}) {
       </button>
       <main className='known-view'>
         {savedSpells.length === 0 && <span className='message'>go learn some spells</span>}
-        <Spells spells={savedSpells} handleKnown={handleKnown} />
+        <Spells spells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete} />
       </main>
     </div>
   )
 }
 
 Saved.propTypes = {
-  savedSpells: PropTypes.array.isRequired
+  savedSpells: PropTypes.array.isRequired,
+  handleKnown: PropTypes.func.isRequired, 
+  handleDelete: PropTypes.func.isRequired
 };

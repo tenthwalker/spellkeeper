@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
-// import Spells from '../Spells/Spells.js';
 import Saved from '../Saved/Saved.js';
 import Main from '../Main/Main.js';
 import './App.css';
-
 
 function App() {
 
@@ -30,27 +28,33 @@ function App() {
       console.log(error);
     }
   }
-
-  function handleKnown(selectedSpell) {
-
-    function saveSpells() {
-      console.log('spell saved');
-      selectedSpell.isKnown = true;
-      setSavedSpells([...savedSpells, selectedSpell]);
-      return savedSpells;
-    }; 
-      
+  
+  function handleDelete(selectedSpell){
     function deleteSpells() {
       console.log('spell deleted');
       selectedSpell.isKnown = false;
       const filteredSpells = savedSpells.filter(spell => spell.id !== selectedSpell.id);
-      setSavedSpells([filteredSpells]);
+      console.log(filteredSpells, 'filtered')
+      setSavedSpells(filteredSpells);
+      console.log(savedSpells, "deleted")
       return savedSpells;
     };
-  
-    selectedSpell.isKnown ? deleteSpells() : saveSpells();
-    console.log('past ternary')
-    return savedSpells
+    savedSpells.length > 0 && deleteSpells();
+    return savedSpells;
+  }
+
+  function handleKnown(selectedSpell) {
+    function saveSpells() {
+      console.log('spell saved');
+      selectedSpell.isKnown = true;
+      savedSpells.push(selectedSpell)
+      console.log(savedSpells, "saved")
+      return selectedSpell;
+    }; 
+      
+    !selectedSpell.isKnown && saveSpells();
+    console.log(selectedSpell, 'selectedSpell')
+    return savedSpells;
   }
 
   useEffect(() => {
@@ -65,8 +69,8 @@ function App() {
       </header>
       {spells.length === 0 && <span className='message'>loading spells</span>}
       <Routes>
-        <Route path='' element={<Main spells={spells} handleKnown={handleKnown} />} />
-        <Route path='/known' element={<Saved savedSpells={savedSpells} handleKnown={handleKnown} />} />
+        <Route path='' element={<Main spells={spells} handleKnown={handleKnown} handleDelete={handleDelete} />} />
+        <Route path='/known' element={<Saved savedSpells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete}/>} />
       </Routes>
     </div>
   );
