@@ -3,7 +3,6 @@ import Card from '../Card/Card.js';
 import PropTypes from 'prop-types';
 
 export default function Spells({spells, handleKnown, handleDelete}) {
-
   const spellCards = spells.map((spell) => (
     <Card
       key={spell.name}
@@ -23,7 +22,7 @@ export default function Spells({spells, handleKnown, handleDelete}) {
     <section className='spell-list'>
       {spellCards}
     </section>
-  )
+  );
 };
 
 Spells.propTypes = {

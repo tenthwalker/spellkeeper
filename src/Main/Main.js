@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function Main({spells, handleKnown, handleDelete}) {
-
   return (
     <div className='main-component'>
       <button className='nav-button'>
@@ -14,8 +13,8 @@ export default function Main({spells, handleKnown, handleDelete}) {
         <Spells spells={spells} handleKnown={handleKnown} handleDelete={handleDelete}/>
       </main>
     </div>
-  )
-}
+  );
+};
 
 Main.propTypes = {
   spells: PropTypes.array.isRequired,

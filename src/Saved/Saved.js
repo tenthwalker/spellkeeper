@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Spells from '../Spells/Spells.js';
 
 export default function Saved({ savedSpells, handleKnown, handleDelete}) {
-
   return (
     <div className='main-component'>
       <button className='nav-button'>
@@ -16,7 +15,7 @@ export default function Saved({ savedSpells, handleKnown, handleDelete}) {
         <Spells spells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete} />
       </main>
     </div>
-  )
+  );
 }
 
 Saved.propTypes = {

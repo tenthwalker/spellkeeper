@@ -40,7 +40,7 @@ describe('App component', () => {
       expect(fetchAcidArrow.response.statusCode).to.equal(200);
       expect(fetchHeroism.response.statusCode).to.equal(200);
       expect(fetchSanctuary.response.statusCode).to.equal(200);
-      })
+      });
     
     cy.get('.spell-list')
       .children()
