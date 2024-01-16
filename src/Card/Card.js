@@ -31,7 +31,6 @@ export default function Card({ name, casting_time, range, duration, desc, handle
 };
 
 Card.propTypes = {
-  index: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   casting_time: PropTypes.string.isRequired,
   range: PropTypes.string.isRequired,
