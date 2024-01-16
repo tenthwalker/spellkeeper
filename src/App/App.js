@@ -24,7 +24,7 @@ function App() {
       const spellNames = await response.json();
 
       return Promise.all(
-        spellNames.results.map(index => fetch(url + index.url).then(response => response.json()))
+        spellNames.results.map(spellName => fetch(url + spellName.url).then(response => response.json()))
       );
     } catch(error) {
       console.log(error);
