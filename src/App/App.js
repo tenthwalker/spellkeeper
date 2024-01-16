@@ -4,6 +4,7 @@ import Saved from '../Saved/Saved.js';
 import PropTypes from 'prop-types';
 import Main from '../Main/Main.js';
 import './App.css';
+import ErrorBoundary from '../Errors/ErrorBoundary.js';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
       );
     } catch(error) {
       console.log(error);
+      alert(`Server Error: ${error.message}`)
     }
   }
   
@@ -67,16 +69,18 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>spellkeeper</h1>
-      </header>
-      {spells.length === 0 && <span className='message'>loading spells</span>}
-      <Routes>
-        <Route path='' element={<Main buttonToggle={buttonToggle} spells={spells} handleKnown={handleKnown} handleDelete={handleDelete} />} />
-        <Route path='/known' element={<Saved buttonToggle={buttonToggle} savedSpells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete}/>} />
-      </Routes>
-    </div>
+    <ErrorBoundary>
+      <div className="App">
+        <header className="App-header">
+          <h1>spellkeeper</h1>
+        </header>
+        {spells.length === 0 && <span className='message'>loading spells</span>}
+        <Routes>
+          <Route path='' element={<Main buttonToggle={buttonToggle} spells={spells} handleKnown={handleKnown} handleDelete={handleDelete} />} />
+          <Route path='/known' element={<Saved buttonToggle={buttonToggle} savedSpells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete}/>} />
+        </Routes>
+      </div>
+    </ErrorBoundary>
   );
 };
 

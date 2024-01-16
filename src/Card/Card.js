@@ -23,8 +23,8 @@ export default function Card({ buttonToggle, name, casting_time, range, duration
       <p>{duration}</p>
       <p>{desc}</p>
       <div className='button-box'>
-        <button disabled={buttonToggle} className="learn-toggle" id='learn' onClick={() => handleKnown(selectedSpell)}>Learn</button>
-        <button disabled={!buttonToggle} className='learn-toggle' id='delete' onClick={()=> handleDelete(selectedSpell)}>Forget</button>
+        <button disabled={buttonToggle} className="learn-toggle learn" onClick={() => handleKnown(selectedSpell)}>Learn</button>
+        <button disabled={!buttonToggle} className='learn-toggle delete' onClick={()=> handleDelete(selectedSpell)}>Forget</button>
       </div>
     </div>
   )
