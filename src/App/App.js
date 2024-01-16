@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Main from '../Main/Main.js';
 import './App.css';
 import ErrorBoundary from '../Errors/ErrorBoundary.js';
+import NotFound from '../Errors/ErrorPage.js';
 
 function App() {
 
@@ -75,6 +76,7 @@ function App() {
         <Routes>
           <Route path='' element={<Main spells={spells} handleKnown={handleKnown} handleDelete={handleDelete} />} />
           <Route path='/known' element={<Saved savedSpells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete}/>} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
     </ErrorBoundary>
