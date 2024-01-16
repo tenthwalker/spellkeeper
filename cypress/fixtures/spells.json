@@ -1,0 +1,20 @@
+{
+	"count": 319,
+	"results": [
+		{
+			"index": "acid-arrow",
+			"name": "Acid Arrow",
+			"url": "/api/spells/acid-arrow"
+		},
+    {
+			"index": "heroism",
+			"name": "Heroism",
+			"url": "/api/spells/heroism"
+		},
+    {
+			"index": "sanctuary",
+			"name": "Sanctuary",
+			"url": "/api/spells/sanctuary"
+		}
+  ]
+}
