@@ -17,14 +17,15 @@
 
 h1 {
   font-family: 'Merienda', cursive;
+  color: #243E36;
 }
 
 h1, span {
-  color: #243E36;
   align-self: center;
 }
 
 p, button, h2, span {
+  color: #243E36;
   font-family: 'Salsa', cursive;
 }
 
