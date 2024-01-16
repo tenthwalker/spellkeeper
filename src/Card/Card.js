@@ -32,7 +32,6 @@ export default function Card({ buttonToggle, name, casting_time, range, duration
 
 Card.propTypes = {
   buttonToggle: PropTypes.bool.isRequired,
-  index: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   casting_time: PropTypes.string.isRequired,
   range: PropTypes.string.isRequired,

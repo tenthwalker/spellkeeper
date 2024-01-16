@@ -9,4 +9,9 @@
   display: flex;
   align-self: center;
   position: sticky;
+  top: 0;
+}
+
+.nav {
+  color: #243E36;
 }
