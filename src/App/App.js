@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Saved from '../Saved/Saved.js';
 import PropTypes from 'prop-types';
 import Main from '../Main/Main.js';
@@ -28,8 +28,8 @@ function App() {
         spellNames.results.map(spellName => fetch(url + spellName.url).then(response => response.json()))
       );
     } catch(error) {
-      console.log(error);
-      alert(`Server Error: ${error.message}`)
+        console.error("There was a problem with the fetch operation:", error);
+        alert(`Server Error: ${error.message}`)
     }
   }
   
