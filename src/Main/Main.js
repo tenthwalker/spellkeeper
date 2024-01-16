@@ -3,7 +3,7 @@ import Spells from '../Spells/Spells.js';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export default function Main({spells, handleKnown, handleDelete}) {
+export default function Main({buttonToggle, spells, handleKnown, handleDelete}) {
 
   return (
     <div className='main-component'>
@@ -11,13 +11,14 @@ export default function Main({spells, handleKnown, handleDelete}) {
         <NavLink to='/known' className='nav'>Your Spellbook</NavLink>
       </button>
       <main className='spell-view'>
-        <Spells spells={spells} handleKnown={handleKnown} handleDelete={handleDelete}/>
+        <Spells buttonToggle={buttonToggle} spells={spells} handleKnown={handleKnown} handleDelete={handleDelete}/>
       </main>
     </div>
   )
 }
 
 Main.propTypes = {
+  buttonToggle: PropTypes.bool.isRequired,
   spells: PropTypes.array.isRequired,
   handleKnown: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired

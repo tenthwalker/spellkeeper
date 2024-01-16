@@ -2,7 +2,7 @@ import './Card.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Card({ name, casting_time, range, duration, desc, handleKnown, handleDelete }) {
+export default function Card({ buttonToggle, name, casting_time, range, duration, desc, handleKnown, handleDelete }) {
 
   const selectedSpell = {
     key: name,
@@ -23,20 +23,21 @@ export default function Card({ name, casting_time, range, duration, desc, handle
       <p>{duration}</p>
       <p>{desc}</p>
       <div className='button-box'>
-        <button className="learn-toggle" id='learn' onClick={() => handleKnown(selectedSpell)}>Learn</button>
-        <button className='learn-toggle' id='delete' onClick={()=> handleDelete(selectedSpell)}>Forget</button>
+        <button disabled={buttonToggle} className="learn-toggle" id='learn' onClick={() => handleKnown(selectedSpell)}>Learn</button>
+        <button disabled={!buttonToggle} className='learn-toggle' id='delete' onClick={()=> handleDelete(selectedSpell)}>Forget</button>
       </div>
     </div>
   )
 };
 
 Card.propTypes = {
-  index: PropTypes.string,
-  name: PropTypes.string,
-  casting_time: PropTypes.string,
-  range: PropTypes.string,
-  duration: PropTypes.string,
-  desc: PropTypes.array,
-  handleKnown: PropTypes.func,
-  handleDelete: PropTypes.func
+  buttonToggle: PropTypes.bool.isRequired,
+  index: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  casting_time: PropTypes.string.isRequired,
+  range: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
+  desc: PropTypes.array.isRequired,
+  handleKnown: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired
 };

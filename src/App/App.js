@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import Saved from '../Saved/Saved.js';
+import PropTypes from 'prop-types';
 import Main from '../Main/Main.js';
 import './App.css';
 
@@ -8,6 +9,7 @@ function App() {
 
   const [spells, setSpells] = useState([]);
   const [savedSpells, setSavedSpells] = useState([]);
+  const [buttonToggle, setButtonToggle] = useState(false);
   
   const url = 'https://www.dnd5eapi.co';
 
@@ -33,6 +35,7 @@ function App() {
     function deleteSpells() {
       console.log('spell deleted');
       selectedSpell.isKnown = false;
+      setButtonToggle(false);
       const filteredSpells = savedSpells.filter(spell => spell.id !== selectedSpell.id);
       console.log(filteredSpells, 'filtered')
       setSavedSpells(filteredSpells);
@@ -47,7 +50,8 @@ function App() {
     function saveSpells() {
       console.log('spell saved');
       selectedSpell.isKnown = true;
-      savedSpells.push(selectedSpell)
+      setButtonToggle(true);
+      savedSpells.push(selectedSpell);
       console.log(savedSpells, "saved")
       return selectedSpell;
     }; 
@@ -69,11 +73,18 @@ function App() {
       </header>
       {spells.length === 0 && <span className='message'>loading spells</span>}
       <Routes>
-        <Route path='' element={<Main spells={spells} handleKnown={handleKnown} handleDelete={handleDelete} />} />
-        <Route path='/known' element={<Saved savedSpells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete}/>} />
+        <Route path='' element={<Main buttonToggle={buttonToggle} spells={spells} handleKnown={handleKnown} handleDelete={handleDelete} />} />
+        <Route path='/known' element={<Saved buttonToggle={buttonToggle} savedSpells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete}/>} />
       </Routes>
     </div>
   );
 };
 
 export default App;
+
+App.propTypes = {
+  buttonToggle: PropTypes.bool.isRequired,
+  spells: PropTypes.array.isRequired,
+  handleKnown: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired
+}
