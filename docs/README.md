@@ -44,21 +44,18 @@ Created by [Arden Ranta](https://github.com/tenthwalker).
 8. To test, run the command `npm run cypress`, then follow the steps to configure E2E testing on your machine.
 
 
-<h2  id="preview"> 🎥 Preview 📱 </h2>
+<h2  id="preview"> 🎥 Desktop Preview 📱 </h2>
 <details>
 
+![Macbook view](https://github.com/tenthwalker/spellkeeper/assets/139941423/108b3e56-adf6-47c7-a7dd-7699f65102a8)
 
+<h2  id="preview"> 📱 Mobile and Tablet Views </h2>
 
-📱 Mobile and Tablet Views 
+![iPad view](https://github.com/tenthwalker/spellkeeper/assets/139941423/05c45cf3-2ec3-41b9-ba9f-4048bccb1fe5)
 
+![iPhone view](https://github.com/tenthwalker/spellkeeper/assets/139941423/694c3665-bed4-4118-9a61-8fcd5538b50e)
 
-
-  <summary>
-    Preview of App
-  </summary>
 </details>
-
-
 
 <h2  id="wins">💪🏻 Wins </h2>
 
