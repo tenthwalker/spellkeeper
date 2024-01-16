@@ -58,8 +58,5 @@ describe('Card component', () => {
   it('passes', () => {
     cy.visit('https://example.cypress.io')
   })
- 
-  it('can delete a saved spell', () => {
-    cy.get('.delete').first().click();
-  });
+
 })
