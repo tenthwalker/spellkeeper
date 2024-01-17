@@ -1,8 +1,10 @@
 import './Card.css';
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 export default function Card({ name, casting_time, range, duration, desc, handleKnown, handleDelete }) {
+
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const selectedSpell = {
     key: name,

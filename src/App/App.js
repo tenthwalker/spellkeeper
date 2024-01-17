@@ -11,6 +11,7 @@ function App() {
 
   const [spells, setSpells] = useState([]);
   const [savedSpells, setSavedSpells] = useState([]);
+  const [error, setError] = useState('');
   
   const url = 'https://www.dnd5eapi.co';
 
@@ -29,6 +30,7 @@ function App() {
       );
     } catch(error) {
         console.error("There was a problem with the fetch operation:", error);
+        setError('There was an error with the fetch')
         alert(`Server Error: ${error.message}`)
     }
   }
@@ -60,6 +62,10 @@ function App() {
     .then(setSpells)
   }, []);
 
+  if(error) {
+    return <div className='error'>{error}</div>
+  }
+
   return (
     <ErrorBoundary>
       <div className="App">
@@ -80,7 +86,7 @@ function App() {
 export default App;
 
 App.propTypes = {
-  spells: PropTypes.array.isRequired,
+  spells: PropTypes.array,
   handleKnown: PropTypes.func,
   handleDelete: PropTypes.func
 }
