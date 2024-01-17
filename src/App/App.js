@@ -34,26 +34,39 @@ function App() {
         alert(`Server Error: ${error.message}`)
     }
   }
+
+  function buttonToggle(selectedSpell) {
+    const isInList = savedSpells.find(spell => spell.id === selectedSpell.id)
+    isInList? handleDelete(selectedSpell) : handleKnown(selectedSpell);
+    return isInList
+  }
   
   function handleDelete(selectedSpell){
     function deleteSpells() {
-      selectedSpell.isKnown = false;
-      const filteredSpells = savedSpells.filter(spell => spell.id !== selectedSpell.id);
-      setSavedSpells(filteredSpells);
-      return savedSpells;
+      if(savedSpells.length === 1){
+        setSavedSpells([]);
+      } else {
+        const filteredSpells = () => {
+        selectedSpell.isKnown = false;
+        savedSpells.filter(spell => spell.id !== selectedSpell.id);
+        setSavedSpells(filteredSpells);
+      }}
+      return selectedSpell;
     };
-    savedSpells.length > 0 && deleteSpells();
+    deleteSpells();
     return savedSpells;
   }
 
   function handleKnown(selectedSpell) {
     function saveSpells() {
-      selectedSpell.isKnown = true;
-      savedSpells.push(selectedSpell);
+      const checkSpell = savedSpells.find(spell => spell.id === selectedSpell.id);
+      if(checkSpell === undefined) {
+        selectedSpell.isKnown = true;
+        setSavedSpells([...savedSpells, selectedSpell])
+      }
       return selectedSpell;
     }; 
-      
-    !selectedSpell.isKnown && saveSpells();
+    saveSpells();
     return savedSpells;
   }
 
@@ -74,8 +87,8 @@ function App() {
         </header>
         {spells.length === 0 && <span className='message'>loading spells</span>}
         <Routes>
-          <Route path='' element={<Main spells={spells} handleKnown={handleKnown} handleDelete={handleDelete} />} />
-          <Route path='/known' element={<Saved savedSpells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete}/>} />
+          <Route path='' element={<Main spells={spells} buttonToggle={buttonToggle} savedSpells={savedSpells}/>} />
+          <Route path='/known' element={<Saved savedSpells={savedSpells} buttonToggle={buttonToggle}/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
@@ -87,6 +100,6 @@ export default App;
 
 App.propTypes = {
   spells: PropTypes.array,
-  handleKnown: PropTypes.func,
-  handleDelete: PropTypes.func
+  savedSpells: PropTypes.array,
+  buttonToggle: PropTypes.func
 }

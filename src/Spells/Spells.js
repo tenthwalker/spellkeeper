@@ -2,7 +2,7 @@ import './Spells.css';
 import Card from '../Card/Card.js';
 import PropTypes from 'prop-types';
 
-export default function Spells({spells, handleKnown, handleDelete}) {
+export default function Spells({spells, buttonToggle, savedSpells}) {
   const spellCards = spells.map((spell) => (
     <Card
       key={spell.name}
@@ -12,12 +12,11 @@ export default function Spells({spells, handleKnown, handleDelete}) {
       range={spell.range}
       duration={spell.duration}
       desc={spell.desc}
-      isKnown="false"
-      handleKnown={handleKnown}
-      handleDelete={handleDelete}
+      savedSpells={savedSpells}
+      buttonToggle={buttonToggle}
     />
   ));
-
+  
   return (
     <section className='spell-list'>
       {spellCards}
@@ -27,6 +26,6 @@ export default function Spells({spells, handleKnown, handleDelete}) {
 
 Spells.propTypes = {
   spells: PropTypes.array.isRequired,
-  handleKnown: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired
+  // handleKnown: PropTypes.func.isRequired,
+  // handleDelete: PropTypes.func.isRequired
 };
