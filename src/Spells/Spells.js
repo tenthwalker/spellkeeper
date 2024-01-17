@@ -26,6 +26,6 @@ export default function Spells({spells, buttonToggle, savedSpells}) {
 
 Spells.propTypes = {
   spells: PropTypes.array.isRequired,
-  // handleKnown: PropTypes.func.isRequired,
-  // handleDelete: PropTypes.func.isRequired
+  buttonToggle: PropTypes.func.isRequired,
+  savedSpells: PropTypes.array.isRequired
 };

@@ -2,7 +2,6 @@ import './Main.css';
 import Spells from '../Spells/Spells.js';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Saved from '../Saved/Saved.js';
 
 export default function Main({spells, buttonToggle, savedSpells}) {
   return (
@@ -20,5 +19,5 @@ export default function Main({spells, buttonToggle, savedSpells}) {
 Main.propTypes = {
   spells: PropTypes.array.isRequired,
   buttonToggle: PropTypes.func.isRequired,
-  // learn: PropTypes.bool.isRequired
+  savedSpells: PropTypes.array.isRequired
 };

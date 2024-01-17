@@ -23,7 +23,7 @@ export default function Card({ name, casting_time, range, duration, desc,  butto
       <p>{duration}</p>
       <p>{desc}</p>
       <div className='button-box'>
-        <button className="learn-toggle learn" onClick={() =>buttonToggle(selectedSpell)}>
+        <button className="learn-toggle learn" onClick={() => buttonToggle(selectedSpell)}>
           {selectedSpell.isKnown ? 'Forget' : 'Learn'}
         </button>
       </div>
@@ -38,5 +38,5 @@ Card.propTypes = {
   duration: PropTypes.string.isRequired,
   desc: PropTypes.array.isRequired,
   buttonToggle: PropTypes.func.isRequired,
-  learn: PropTypes.bool.isRequired
+  savedSpells: PropTypes.array.isRequired
 };

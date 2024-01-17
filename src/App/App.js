@@ -8,11 +8,9 @@ import ErrorBoundary from '../Errors/ErrorBoundary.js';
 import NotFound from '../Errors/ErrorPage.js';
 
 function App() {
-
   const [spells, setSpells] = useState([]);
   const [savedSpells, setSavedSpells] = useState([]);
   const [error, setError] = useState('');
-  
   const url = 'https://www.dnd5eapi.co';
 
   async function getSpells() {
@@ -28,6 +26,7 @@ function App() {
       return Promise.all(
         spellNames.results.map(spellName => fetch(url + spellName.url).then(response => response.json()))
       );
+
     } catch(error) {
         console.error("There was a problem with the fetch operation:", error);
         setError('There was an error with the fetch')
