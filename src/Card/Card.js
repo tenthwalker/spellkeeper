@@ -2,7 +2,7 @@ import './Card.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Card({ name, casting_time, range, duration, desc, handleKnown, handleDelete }) {
+export default function Card({ name, casting_time, range, duration, desc,  buttonToggle, savedSpells }) {
 
   const selectedSpell = {
     key: name,
@@ -12,7 +12,7 @@ export default function Card({ name, casting_time, range, duration, desc, handle
     range: range,
     duration: duration,
     desc: desc,
-    isKnown: false
+    isKnown: savedSpells?.find(spell => spell.name === name)
   }
 
   return (
@@ -23,11 +23,12 @@ export default function Card({ name, casting_time, range, duration, desc, handle
       <p>{duration}</p>
       <p>{desc}</p>
       <div className='button-box'>
-        <button className="learn-toggle learn" onClick={() => handleKnown(selectedSpell)}>Learn</button>
-        <button className='learn-toggle delete' onClick={()=> handleDelete(selectedSpell)}>Forget</button>
+        <button className="learn-toggle" onClick={() => buttonToggle(selectedSpell)}>
+          {selectedSpell.isKnown ? 'Forget' : 'Learn'}
+        </button>
       </div>
     </div>
-  )
+  );
 };
 
 Card.propTypes = {
@@ -36,6 +37,6 @@ Card.propTypes = {
   range: PropTypes.string.isRequired,
   duration: PropTypes.string.isRequired,
   desc: PropTypes.array.isRequired,
-  handleKnown: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired
+  buttonToggle: PropTypes.func.isRequired,
+  savedSpells: PropTypes.array.isRequired
 };

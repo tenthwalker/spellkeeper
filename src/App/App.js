@@ -8,10 +8,9 @@ import ErrorBoundary from '../Errors/ErrorBoundary.js';
 import NotFound from '../Errors/ErrorPage.js';
 
 function App() {
-
   const [spells, setSpells] = useState([]);
   const [savedSpells, setSavedSpells] = useState([]);
-  
+  const [error, setError] = useState('');
   const url = 'https://www.dnd5eapi.co';
 
   async function getSpells() {
@@ -27,31 +26,47 @@ function App() {
       return Promise.all(
         spellNames.results.map(spellName => fetch(url + spellName.url).then(response => response.json()))
       );
+
     } catch(error) {
         console.error("There was a problem with the fetch operation:", error);
+        setError('There was an error with the fetch')
         alert(`Server Error: ${error.message}`)
     }
   }
+
+  function buttonToggle(selectedSpell) {
+    const isInList = savedSpells.find(spell => spell.id === selectedSpell.id)
+    isInList ? handleDelete(selectedSpell) : handleKnown(selectedSpell);
+    return isInList
+  }
   
   function handleDelete(selectedSpell){
-    function deleteSpells() {
-      selectedSpell.isKnown = false;
-      const filteredSpells = savedSpells.filter(spell => spell.id !== selectedSpell.id);
-      setSavedSpells(filteredSpells);
+    function deleteSpells(selectedSpell) {
+      if(savedSpells.length === 1){
+        setSavedSpells([]);
+      }
+        const filteredSpells = () => {
+          selectedSpell.isKnown = false;
+          savedSpells.filter(spell => spell.id !== selectedSpell.id);
+        }
+        setSavedSpells(filteredSpells);
       return savedSpells;
     };
-    savedSpells.length > 0 && deleteSpells();
+
+    deleteSpells();
     return savedSpells;
   }
 
   function handleKnown(selectedSpell) {
     function saveSpells() {
-      selectedSpell.isKnown = true;
-      savedSpells.push(selectedSpell);
-      return selectedSpell;
+      const checkSpell = savedSpells.find(spell => spell.id === selectedSpell.id);
+      if(checkSpell === undefined) {
+        selectedSpell.isKnown = true;
+        setSavedSpells([...savedSpells, selectedSpell]);
+        return savedSpells;
+      };
     }; 
-      
-    !selectedSpell.isKnown && saveSpells();
+    saveSpells();
     return savedSpells;
   }
 
@@ -59,6 +74,10 @@ function App() {
     getSpells()
     .then(setSpells)
   }, []);
+
+  if(error) {
+    return <div className='error'>{error}</div>
+  }
 
   return (
     <ErrorBoundary>
@@ -68,8 +87,8 @@ function App() {
         </header>
         {spells.length === 0 && <span className='message'>loading spells</span>}
         <Routes>
-          <Route path='' element={<Main spells={spells} handleKnown={handleKnown} handleDelete={handleDelete} />} />
-          <Route path='/known' element={<Saved savedSpells={savedSpells} handleKnown={handleKnown} handleDelete={handleDelete}/>} />
+          <Route path='' element={<Main spells={spells} buttonToggle={buttonToggle} savedSpells={savedSpells}/>} />
+          <Route path='/known' element={<Saved savedSpells={savedSpells} buttonToggle={buttonToggle}/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
@@ -80,7 +99,7 @@ function App() {
 export default App;
 
 App.propTypes = {
-  spells: PropTypes.array.isRequired,
-  handleKnown: PropTypes.func,
-  handleDelete: PropTypes.func
+  spells: PropTypes.array,
+  savedSpells: PropTypes.array,
+  buttonToggle: PropTypes.func
 }

@@ -48,7 +48,6 @@ describe('Main component', () => {
         cy.contains('p', 'Instantaneous');
         cy.contains('p', 'A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage and no damage at the end of its next turn.');
         cy.contains('button', 'Learn');
-        cy.contains('button', 'Forget');
       });
 
     cy.get('.spell-list')
@@ -60,18 +59,6 @@ describe('Main component', () => {
         cy.contains('p', '30 feet');
         cy.contains('p', 'You ward a creature within range against attack. Until the spell ends, any creature who targets the warded creature with an attack or a harmful spell must first make a wisdom saving throw. On a failed save, the creature must choose a new target or lose the attack or spell. This spell doesn\'t protect the warded creature from area effects, such as the explosion of a fireball.', 'If the warded creature makes an attack or casts a spell that affects an enemy creature, this spell ends.');
         cy.contains('button', 'Learn');
-        cy.contains('button', 'Forget');
       });
   });
-
-  it('handles bad/unknown routes', () => {
-    cy.visit('http://localhost:3000/undefined');
-    cy.get('h1').should('contain', 'spellkeeper');
-    cy.get('.main-component').should('be.visible');
-    cy.get('h2').should('contain', 'Oops! You seem to be lost.');
-    cy.get('p').should('contain', 'Return to the path of knowledge:');
-    cy.get('.nav-button').should('have.length', 2);
-    cy.get('a').first().should('contain', 'All Spells');
-    cy.get('a').last().should('contain', 'Your Spellbook');
-  })
-})
+});

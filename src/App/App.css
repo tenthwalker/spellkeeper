@@ -33,3 +33,10 @@ button {
   background-color: #44BBA4;
   border-radius: 5px;
 }
+
+.error {
+  background-color: #E1D4ED;
+  color: #243E36;
+  align-self: center;
+  justify-self: center;
+}

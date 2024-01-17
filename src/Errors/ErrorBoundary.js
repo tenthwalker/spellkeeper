@@ -11,11 +11,11 @@ class ErrorBoundary extends Component {
   }
  
   static getDerivedStateFromError(error) {
-    if (error.message === 'Network response was not ok') {
+    if(error.message === 'Network response was not ok') {
       return { hasError: true, errorMessage: 'Network error' };
     } 
     if(error.message === 'Error fetching spells:') {
-      return{ hasError: true, errorMessage: 'Cannot fetch spells'}
+      return { hasError: true, errorMessage: 'Cannot fetch spells'}
     }
     return { hasError: true, errorMessage: error.toString() };
   }
