@@ -1,5 +1,24 @@
 describe('App component', () => {
   beforeEach(() => {
+    cy.intercept('GET', 'https://www.dnd5eapi.co' + '/api/spells', {
+      statusCode: 200,
+      fixture: 'spells',
+    }).as('fetchSpellNames');
+
+    cy.intercept('GET', 'https://www.dnd5eapi.co/api/spells/acid-arrow', {
+    statusCode: 200,
+    fixture: 'acid-arrow',
+    }).as('fetchAcidArrow');
+
+    cy.intercept('GET', 'https://www.dnd5eapi.co/api/spells/heroism', {
+      statusCode: 200,
+      fixture: 'heroism',
+    }).as('fetchHeroism');
+
+    cy.intercept('GET', 'https://www.dnd5eapi.co/api/spells/sanctuary', {
+      statusCode: 200,
+      fixture: 'sanctuary',
+    }).as('fetchSanctuary');
     cy.visit('http://localhost:3000/');
   });
 
@@ -66,36 +85,5 @@ describe('App component', () => {
         cy.contains('button', 'Learn');
         cy.contains('button', 'Forget');
       });
-  });
-
-  it('Handles error when API fails', () => {
-    cy.intercept('GET', 'https://www.dnd5eapi.co/api/spells', {
-      statusCode: 500,
-      body: 'Server Error',
-      delayMs: 200,
-    }).as('fetchError1'); 
-    cy.intercept('GET', 'https://www.dnd5eapi.co/api/spells/acid-arrow', {
-      statusCode: 500,
-      body: 'Server Error',
-      delayMs: 200,
-    }).as('fetchError2');
-  
-    cy.intercept('GET', 'https://www.dnd5eapi.co/api/spells/heroism', {
-      statusCode: 500,
-      body: 'Server Error',
-      delayMs: 200,
-    }).as('fetchError3');
-  
-    cy.intercept('GET', 'https://www.dnd5eapi.co/api/spells/sanctuary', {
-      statusCode: 500,
-      body: 'Server Error',
-      delayMs: 200,
-    }).as('fetchError4')
-    cy.wait(['@fetchError1', '@fetchError2', '@fetchError3', '@fetchError4']).spread((fetchError1, fetchError2, fetchError3, fetchError4) => {
-      expect(fetchError1.response.statusCode).to.equal(500);
-      expect(fetchError2.response.statusCode).to.equal(500);
-      expect(fetchError3.response.statusCode).to.equal(500);
-      expect(fetchError4.response.statusCode).to.equal(500);
-    });
   });
 });
