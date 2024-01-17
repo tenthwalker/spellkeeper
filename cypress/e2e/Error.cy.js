@@ -68,6 +68,7 @@ describe('Error handling', () => {
       fixture: 'sanctuary',
     }).as('fetchSanctuary');
     cy.visit('http://localhost:3000/undefined');
+    cy.get('h1').should('contain', 'spellkeeper');
     cy.get('.main-component').should('be.visible');
     cy.get('h2').should('contain', 'Oops! You seem to be lost.');
     cy.get('p').should('contain', 'Return to the path of knowledge:');

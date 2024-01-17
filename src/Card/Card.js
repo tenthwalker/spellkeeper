@@ -23,12 +23,12 @@ export default function Card({ name, casting_time, range, duration, desc,  butto
       <p>{duration}</p>
       <p>{desc}</p>
       <div className='button-box'>
-        <button className="learn-toggle learn" onClick={() => buttonToggle(selectedSpell)}>
+        <button className="learn-toggle" onClick={() => buttonToggle(selectedSpell)}>
           {selectedSpell.isKnown ? 'Forget' : 'Learn'}
         </button>
       </div>
     </div>
-  )
+  );
 };
 
 Card.propTypes = {

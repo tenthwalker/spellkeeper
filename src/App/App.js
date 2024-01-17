@@ -36,22 +36,23 @@ function App() {
 
   function buttonToggle(selectedSpell) {
     const isInList = savedSpells.find(spell => spell.id === selectedSpell.id)
-    isInList? handleDelete(selectedSpell) : handleKnown(selectedSpell);
+    isInList ? handleDelete(selectedSpell) : handleKnown(selectedSpell);
     return isInList
   }
   
   function handleDelete(selectedSpell){
-    function deleteSpells() {
+    function deleteSpells(selectedSpell) {
       if(savedSpells.length === 1){
         setSavedSpells([]);
-      } else {
+      }
         const filteredSpells = () => {
-        selectedSpell.isKnown = false;
-        savedSpells.filter(spell => spell.id !== selectedSpell.id);
+          selectedSpell.isKnown = false;
+          savedSpells.filter(spell => spell.id !== selectedSpell.id);
+        }
         setSavedSpells(filteredSpells);
-      }}
-      return selectedSpell;
+      return savedSpells;
     };
+
     deleteSpells();
     return savedSpells;
   }
@@ -61,9 +62,9 @@ function App() {
       const checkSpell = savedSpells.find(spell => spell.id === selectedSpell.id);
       if(checkSpell === undefined) {
         selectedSpell.isKnown = true;
-        setSavedSpells([...savedSpells, selectedSpell])
-      }
-      return selectedSpell;
+        setSavedSpells([...savedSpells, selectedSpell]);
+        return savedSpells;
+      };
     }; 
     saveSpells();
     return savedSpells;
