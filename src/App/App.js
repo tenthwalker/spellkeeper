@@ -40,22 +40,17 @@ function App() {
     return isInList
   }
   
-  function handleDelete(selectedSpell){
-    function deleteSpells(selectedSpell) {
+  function handleDelete(selectedSpell) {
+    function deleteSpells() {
       if(savedSpells.length === 1){
         setSavedSpells([]);
-      }
-        const filteredSpells = () => {
-          selectedSpell.isKnown = false;
-          savedSpells.filter(spell => spell.id !== selectedSpell.id);
-        }
+      } else {
+        const filteredSpells = savedSpells.filter(spell => spell.id !== selectedSpell.id); 
         setSavedSpells(filteredSpells);
-      return savedSpells;
-    };
-
+      }
+    }
     deleteSpells();
-    return savedSpells;
-  }
+  };
 
   function handleKnown(selectedSpell) {
     function saveSpells() {

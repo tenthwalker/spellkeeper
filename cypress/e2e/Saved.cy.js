@@ -123,7 +123,7 @@ describe('Saved component', () => {
         cy.contains('button', 'Forget');
       });
     cy.get('.learn-toggle').first().click();
-    cy.get('.spell-list').children().should('have.length', 2);
+    cy.get('.spell-list').children().should('have.length', 1);
     cy.get('h2').should('not.contain', 'Acid Arrow');
     cy.get('p').should('not.contain', '1 action');
     cy.get('p').should('not.contain', '90 feet');
